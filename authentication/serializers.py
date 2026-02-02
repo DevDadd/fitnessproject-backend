@@ -1,6 +1,12 @@
 from rest_framework import serializers
 from .models import User
 
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(required=True, write_only=True)
+    password = serializers.CharField(required=True, write_only=True, style={'input_type': 'password'})
+
+
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
     
